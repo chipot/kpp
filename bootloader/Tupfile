@@ -1,0 +1,1 @@
+# : bootsect.nasm |> nasm -f bin -o %o %f |> bootsect

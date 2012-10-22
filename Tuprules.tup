@@ -1,0 +1,17 @@
+CXXFLAGS += -W -Wall
+
+CXXFLAGS += -m32 -ffreestanding -fno-rtti 
+CXXFLAGS += -fno-exceptions -nostdlib -nostdinc -nostdlibinc -nobuiltininc
+CXXFLAGS += -fno-stack-protector -std=c++11
+CXXFLAGS += -Xclang -fcolor-diagnostics
+
+CXXFLAGS += @(CXXFLAGS)
+
+CXXFLAGS += -I../include
+CXXFLAGS += -pipe
+
+!cxx = |> clang++ $(CXXFLAGS) -c %f -o %o |> %B.o
+!cxxasm = |> clang++ -S $(CXXFLAGS) -c %f -o %o |> %B.s
+# !ld  = |> ld -T kpp_elf_i386.xx %f -o %o |>
+# !ld  = |> ld -melf_i386 -Ttext=100000 --entry=_start %f -o %o |>
+!ld  = |> ld -T kpp_elf_i386.xx -melf_i386 -Ttext=100000 --entry=_start %f -o %o |>

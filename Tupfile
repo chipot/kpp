@@ -1,0 +1,6 @@
+include_rules 
+
+: arch/mboot.o kernel/kernel.o kernel/*.o arch/*.o | kpp_elf_i386.x \
+	|> !ld \
+	|> kpp
+

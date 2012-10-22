@@ -1,0 +1,1 @@
+: foreach @(TUP_ARCH)/*.nasm |> nasm -f elf32 %f -o %o |> %B.o

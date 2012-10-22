@@ -1,0 +1,10 @@
+include_rules
+
+Kernel-sources += GDT.cpp \
+		  IDT.cpp \
+		  kernel.cpp \
+		  screen.cpp
+
+: foreach $(Kernel-sources) |> !cxx |>
+
+# : foreach $(Kernel-sources) |> !cxxasm |>
